@@ -25,10 +25,18 @@
             <version>${mysql-connector-java.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
     </dependencies>
     <properties>
         <hibernate-core.version>5.2.5.Final</hibernate-core.version>
         <mysql-connector-java.version>5.1.44</mysql-connector-java.version>
+        <lombok.version>1.18.4</lombok.version>
     </properties>
 
 
