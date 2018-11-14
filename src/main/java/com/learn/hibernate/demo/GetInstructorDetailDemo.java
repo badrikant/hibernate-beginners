@@ -10,14 +10,14 @@ import org.hibernate.cfg.Configuration;
  * @author badrikant.soni on Nov,2018
  */
 public class GetInstructorDetailDemo {
+
     public static void main(String[] args) {
 
         // create session factory
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Instructor.class)
-                .addAnnotatedClass(InstructorDetail.class)
-                .buildSessionFactory();
+        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
+                                                    .addAnnotatedClass(Instructor.class)
+                                                    .addAnnotatedClass(InstructorDetail.class)
+                                                    .buildSessionFactory();
 
         // create session
         Session session = factory.getCurrentSession();
@@ -29,25 +29,21 @@ public class GetInstructorDetailDemo {
 
             // get the instructor detail object
             int theId = 2;
-            InstructorDetail tempInstructorDetail =
-                    session.get(InstructorDetail.class, theId);
+            InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, theId);
 
             // print the instructor detail
             System.out.println("tempInstructorDetail: " + tempInstructorDetail);
 
-            // print  the associated instructor
-            System.out.println("the associated instructor: " +
-                    tempInstructorDetail.getInstructor());
+            // print the associated instructor
+            System.out.println("the associated instructor: " + tempInstructorDetail.getInstructor());
 
             // commit transaction
             session.getTransaction().commit();
 
             System.out.println("Done!");
-        }
-        catch (Exception exc) {
+        } catch (Exception exc) {
             exc.printStackTrace();
-        }
-        finally {
+        } finally {
             // handle connection leak issue
             session.close();
 

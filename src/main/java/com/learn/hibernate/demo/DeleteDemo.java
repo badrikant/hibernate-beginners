@@ -14,11 +14,10 @@ public class DeleteDemo {
     public static void main(String[] args) {
 
         // create session factory
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Instructor.class)
-                .addAnnotatedClass(InstructorDetail.class)
-                .buildSessionFactory();
+        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
+                                                    .addAnnotatedClass(Instructor.class)
+                                                    .addAnnotatedClass(InstructorDetail.class)
+                                                    .buildSessionFactory();
 
         // create session
         Session session = factory.getCurrentSession();
@@ -30,8 +29,7 @@ public class DeleteDemo {
 
             // get instructor by primary key / id
             int theId = 1;
-            Instructor tempInstructor =
-                    session.get(Instructor.class, theId);
+            Instructor tempInstructor = session.get(Instructor.class, theId);
 
             System.out.println("Found instructor: " + tempInstructor);
 

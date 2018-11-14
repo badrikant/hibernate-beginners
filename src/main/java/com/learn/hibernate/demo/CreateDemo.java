@@ -14,11 +14,10 @@ public class CreateDemo {
     public static void main(String[] args) {
 
         // create session factory
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Instructor.class)
-                .addAnnotatedClass(InstructorDetail.class)
-                .buildSessionFactory();
+        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
+                                                    .addAnnotatedClass(Instructor.class)
+                                                    .addAnnotatedClass(InstructorDetail.class)
+                                                    .buildSessionFactory();
 
         // create session
         Session session = factory.getCurrentSession();
@@ -26,23 +25,16 @@ public class CreateDemo {
         try {
 
             // create the objects
-			/*
-			Instructor tempInstructor =
-					new Instructor("Chad", "Darby", "darby@luv2code.com");
+            /*
+             * Instructor tempInstructor = new Instructor("Chad", "Darby", "darby@luv2code.com");
+             * 
+             * InstructorDetail tempInstructorDetail = new InstructorDetail( "http://www.luv2code.com/youtube",
+             * "Luv 2 code!!!");
+             */
 
-			InstructorDetail tempInstructorDetail =
-					new InstructorDetail(
-							"http://www.luv2code.com/youtube",
-							"Luv 2 code!!!");
-			*/
+            Instructor tempInstructor = new Instructor("Badrikant", "Soni", "badrikant.soni@xyz.com");
 
-            Instructor tempInstructor =
-                    new Instructor("Badrikant", "Soni", "badrikant.soni@xyz.com");
-
-            InstructorDetail tempInstructorDetail =
-                    new InstructorDetail(
-                            "http://www.youtube.com",
-                            "Guitar");
+            InstructorDetail tempInstructorDetail = new InstructorDetail("http://www.youtube.com", "Guitar");
 
             // associate the objects
             tempInstructor.setInstructorDetail(tempInstructorDetail);
@@ -62,8 +54,7 @@ public class CreateDemo {
             session.getTransaction().commit();
 
             System.out.println("Done!");
-        }
-        finally {
+        } finally {
             factory.close();
         }
     }
