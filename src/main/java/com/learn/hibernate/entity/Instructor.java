@@ -1,8 +1,8 @@
 package com.learn.hibernate.entity;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,11 +18,12 @@ import javax.persistence.Table;
  * @author badrikant.soni on Nov,2018
  */
 
-@Data
-@ToString
+
 @NoArgsConstructor
 @Entity
 @Table(name = "instructor")
+@Getter
+@Setter
 public class Instructor {
 
     // annotate the class as an entity and map to db table
@@ -61,5 +62,16 @@ public class Instructor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Instructor{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", instructorDetail=" + instructorDetail +
+                '}';
     }
 }
