@@ -10,7 +10,7 @@ public class TestJdb {
 
     public static void main(String[] args) {
 
-        String jdbcUrl = "jdbc:mysql://localhost:3306/hb-03-one-to-many?useSSL=false";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/hb-04-one-to-many-uni?useSSL=false";
         String user = "hbstudent";
         String pass = "hbstudent";
 
