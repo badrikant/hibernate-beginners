@@ -3,6 +3,8 @@ package com.learn.hibernate.demo;
 import com.learn.hibernate.entity.Course;
 import com.learn.hibernate.entity.Instructor;
 import com.learn.hibernate.entity.InstructorDetail;
+import com.learn.hibernate.entity.Review;
+import com.learn.hibernate.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -10,9 +12,9 @@ import org.hibernate.cfg.Configuration;
 /**
  * @author badrikant.soni on Nov,14/11/18,2018
  *
- * Add Instructor to database
+ * Create courses and add reviews.
  */
-public class CreateInstructorDemo {
+public class AddCourseAndStudentDemo {
 
     public static void main(String[] args) {
 
@@ -21,6 +23,8 @@ public class CreateInstructorDemo {
                                                     .addAnnotatedClass(Instructor.class)
                                                     .addAnnotatedClass(InstructorDetail.class)
                                                     .addAnnotatedClass(Course.class)
+                                                    .addAnnotatedClass(Review.class)
+                                                    .addAnnotatedClass(Student.class)
                                                     .buildSessionFactory();
 
         // create session
@@ -28,24 +32,19 @@ public class CreateInstructorDemo {
 
         try {
 
-            // create the objects
-            Instructor tempInstructor = new Instructor("Badrikant", "Soni", "badri@abc.com");
-
-            InstructorDetail tempInstructorDetail = new InstructorDetail("http://www.youtube.com", "Video Games");
-
-            // associate the objects
-            tempInstructor.setInstructorDetail(tempInstructorDetail);
-
             // start a transaction
             session.beginTransaction();
 
-            // save the instructor
-            //
-            // Note: this will ALSO save the details object
-            // because of CascadeType.ALL
-            //
-            System.out.println("Saving instructor: " + tempInstructor);
-            session.save(tempInstructor);
+            // get the student mary from database
+
+
+            // create more courses
+
+
+            // add student to courses
+
+
+            // save the courses
 
             // commit transaction
             session.getTransaction().commit();

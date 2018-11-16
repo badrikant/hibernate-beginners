@@ -4,6 +4,7 @@ import com.learn.hibernate.entity.Course;
 import com.learn.hibernate.entity.Instructor;
 import com.learn.hibernate.entity.InstructorDetail;
 import com.learn.hibernate.entity.Review;
+import com.learn.hibernate.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,9 +12,9 @@ import org.hibernate.cfg.Configuration;
 /**
  * @author badrikant.soni on Nov,14/11/18,2018
  *
- * Retrieve courses & reviews
+ * Create courses and add reviews.
  */
-public class GetCourseAndReviewsDemo {
+public class CreateCourseAndStudentDemo {
 
     public static void main(String[] args) {
 
@@ -23,6 +24,7 @@ public class GetCourseAndReviewsDemo {
                                                     .addAnnotatedClass(InstructorDetail.class)
                                                     .addAnnotatedClass(Course.class)
                                                     .addAnnotatedClass(Review.class)
+                                                    .addAnnotatedClass(Student.class)
                                                     .buildSessionFactory();
 
         // create session
@@ -33,15 +35,28 @@ public class GetCourseAndReviewsDemo {
             // start a transaction
             session.beginTransaction();
 
-            // get the course
-            int theId = 10;
-            Course tempCourse = session.get(Course.class, theId);
+            // create a new course
+            Course tempCourse = new Course("Pacman - how to Score one million points");
 
-            // print the course
-            System.out.println(tempCourse);
+            // save the course
+            System.out.println("\nSaving the course ...");
+            session.save(tempCourse);
+            System.out.println("Saved course:" + tempCourse);
 
-            // print the course reviews
-            System.out.println(tempCourse.getReviews());
+            // create the students
+            Student tempStudent1 = new Student("Badrikant","Soni","abc@gmail.com");
+            Student tempStudent2 = new Student("Shri","D","xyz@gmail.com");
+
+
+            // add students to the course
+            tempCourse.addStudent(tempStudent1);
+            tempCourse.addStudent(tempStudent2);
+
+            // save the students
+            System.out.println("\nSaving students...");
+            session.save(tempStudent1);
+            session.save(tempStudent2);
+            System.out.println("Saved students" + tempCourse);
 
             // commit transaction
             session.getTransaction().commit();
