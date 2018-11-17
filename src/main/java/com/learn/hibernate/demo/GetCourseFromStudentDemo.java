@@ -12,9 +12,9 @@ import org.hibernate.cfg.Configuration;
 /**
  * @author badrikant.soni on Nov,14/11/18,2018
  *
- * Add more courses to student
+ * Get course from student(Badrikant).
  */
-public class AddCourseAndStudentDemo {
+public class GetCourseFromStudentDemo {
 
     public static void main(String[] args) {
 
@@ -41,19 +41,6 @@ public class AddCourseAndStudentDemo {
 
             System.out.println("\nLoaded student: " + theStudent);
             System.out.println("Courses: " + theStudent.getCourses());
-
-            // create more courses
-            Course tempCourse1 = new Course("Rubik's cube - How to speed cube");
-            Course tempCourse2 = new Course("Mario - Game Development");
-
-
-            // add student to courses
-            tempCourse1.addStudent(theStudent);
-            tempCourse2.addStudent(theStudent);
-
-            // save the courses
-            session.save(tempCourse1);
-            session.save(tempCourse2);
 
             // commit transaction
             session.getTransaction().commit();

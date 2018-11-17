@@ -12,9 +12,9 @@ import org.hibernate.cfg.Configuration;
 /**
  * @author badrikant.soni on Nov,14/11/18,2018
  *
- * Add more courses to student
+ * Delete course(pacman..) from student(Badrikant).
  */
-public class AddCourseAndStudentDemo {
+public class DeleteCourseFromStudentDemo {
 
     public static void main(String[] args) {
 
@@ -35,25 +35,13 @@ public class AddCourseAndStudentDemo {
             // start a transaction
             session.beginTransaction();
 
-            // get the student Badrikant from database
-            int studentId = 1;
-            Student theStudent = session.get(Student.class,studentId);
+            // get the course(pacman) from database
+            int courseId = 10;
+            Course tempCourse = session.get(Course.class,courseId);
 
-            System.out.println("\nLoaded student: " + theStudent);
-            System.out.println("Courses: " + theStudent.getCourses());
-
-            // create more courses
-            Course tempCourse1 = new Course("Rubik's cube - How to speed cube");
-            Course tempCourse2 = new Course("Mario - Game Development");
-
-
-            // add student to courses
-            tempCourse1.addStudent(theStudent);
-            tempCourse2.addStudent(theStudent);
-
-            // save the courses
-            session.save(tempCourse1);
-            session.save(tempCourse2);
+            // Delete the course
+            System.out.println("Deleting course: " + tempCourse);
+            session.delete(tempCourse);
 
             // commit transaction
             session.getTransaction().commit();
